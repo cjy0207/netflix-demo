@@ -18,7 +18,7 @@ const AppLayout = () => {
               navbarScroll
             >
               <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="./movies">Movie</Nav.Link>
+              <Nav.Link href="/movies">Movie</Nav.Link>
             </Nav>
             <Form className="d-flex">
               <Form.Control
