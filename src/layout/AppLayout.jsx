@@ -8,7 +8,7 @@ const AppLayout = () => {
       <Navbar expand="lg" variant="dark" bg="dark">
         <Container fluid>
           <Navbar.Brand href="#" className="navbar-brand-logo">
-            <img src="netflix_red.png" width={100}/>
+            <img src="./netflix_red.png" width={100}/>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
@@ -18,7 +18,7 @@ const AppLayout = () => {
               navbarScroll
             >
               <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/movies">Movies</Nav.Link>
+              <Nav.Link href="./movies">Movie</Nav.Link>
             </Nav>
             <Form className="d-flex">
               <Form.Control
