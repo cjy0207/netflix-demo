@@ -12,7 +12,7 @@ const AppLayout = () => {
     <div>
       <Navbar expand="lg" variant="dark" bg="dark">
         <Container fluid>
-          <Navbar.Brand href="#" className="navbar-brand-logo">
+          <Navbar.Brand onClick={()=>gotoPage("/")} className="navbar-brand-logo">
             <img src="./netflix_red.png" width={100}/>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
