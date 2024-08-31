@@ -1,8 +1,13 @@
 import React from "react";
 import { Button, Container, Form, Nav, Navbar } from "react-bootstrap";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 
 const AppLayout = () => {
+  const Navigate = useNavigate()
+
+  const gotoPage = (path) => {
+    Navigate(path)
+  }
   return (
     <div>
       <Navbar expand="lg" variant="dark" bg="dark">
@@ -17,8 +22,8 @@ const AppLayout = () => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/movies">Movie</Nav.Link>
+              <Nav.Link onClick={()=>gotoPage("/")}>Home</Nav.Link>
+              <Nav.Link onClick={()=>gotoPage("/movies")}>Movie</Nav.Link>
             </Nav>
             <Form className="d-flex">
               <Form.Control
