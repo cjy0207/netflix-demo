@@ -10,10 +10,10 @@ const AppLayout = () => {
   }
   return (
     <div>
-      <Navbar expand="lg" variant="dark" bg="dark">
+      <Navbar expand="lg" variant="dark">
         <Container fluid>
           <Navbar.Brand onClick={()=>gotoPage("/")} className="navbar-brand-logo">
-            <img src="./netflix_red.png" width={100}/>
+            <img src="/netflix_red.png" width={100}/>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
