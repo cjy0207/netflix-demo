@@ -1,0 +1,64 @@
+.movie-card{
+    width: 330px;
+    height: 220px;
+    background-size: cover;
+    cursor: pointer;
+    transform: 0.4s;
+    font-size: small;
+}
+.overlay{
+    width: 100%;
+    height: 100%;
+    background: rgba(39, 39, 39, 0.7);
+    opacity: 0;
+    transition: all 1s;
+    color: white;
+    font-weight: bold;
+    overflow-wrap: break-word;
+    padding: 10px;
+}
+.overlay:hover{
+    opacity: 1;
+    border-radius: 7px;
+}
+
+
+.movie-card:hover{
+    transform: scale(1.3) translateZ(20px);
+    z-index: 2;
+    border-radius: 7px;
+}
+
+
+.movie-details {
+    margin-bottom: 10px;
+  }
+  
+.movie-details-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    gap: 2px;
+}
+
+.under18{
+    color: rgb(26, 234, 26);
+    font-weight: bold;
+    
+}
+
+.over18{
+    color: red;
+    font-weight: bold;
+}
+
+.icon{
+    margin-right: 5px;
+}
+
+@media (max-width: 464px) {
+    .movie-card {
+        width: 200px;
+        height: 120px;
+    }
+}

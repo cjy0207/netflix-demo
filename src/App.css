@@ -1,6 +1,5 @@
-.app{
-  height: 100vh;
-  background-color: black;
-  color: white;
+body{
+  background-color: black !important;
+  color: white !important;
 }
 

@@ -1,0 +1,25 @@
+.carousel-container{
+    overflow: hidden;
+    height: 330px;
+    bottom: 30px;
+}
+
+.movie-slider{
+    margin-left: 14vh;
+}
+
+.main-title{
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
+@media (max-width: 464px) {
+    .movie-slider {
+        margin-left: 2vh;
+    }
+
+    .carousel-container{
+        height: 200px;
+        bottom: 30px;
+    }
+}
