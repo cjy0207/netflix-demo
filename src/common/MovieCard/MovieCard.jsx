@@ -3,9 +3,22 @@ import { Badge } from "react-bootstrap";
 import "./MovieCard.style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { useMovieGenreQuery } from "../../hooks/useMovieGenre";
 
 const MovieCard = ({ movie }) => {
   const age = movie.adult ? "over18" : "under18";
+
+  const {data : genreData}=useMovieGenreQuery()
+  console.log("gg", genreData)
+  const showGenre=(genreIdList)=>{
+    if(!genreData) return []
+    const genreNameList=genreIdList.map((id)=>{
+        const genreObj = genreData.find((genre)=>genre.id===id);
+        return genreObj.name;
+    })
+
+    return genreNameList;
+  }
 
   return (
     <div
@@ -20,7 +33,7 @@ const MovieCard = ({ movie }) => {
       <div className="overlay">
         <h2>{movie.title}</h2>
         <div className="overlay-details">
-          {movie.genre_ids.map((id) => (
+          {showGenre(movie.genre_ids).map((id) => (
             <Badge bg="danger">{id}</Badge>
           ))}
           <div className="movie-details-container">

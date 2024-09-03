@@ -56,9 +56,16 @@
     margin-right: 5px;
 }
 
+@media (max-width: 768px) {
+    .movie-card {
+        width: 340px;
+        height: 220px;
+    }
+  }
+
 @media (max-width: 464px) {
     .movie-card {
-        width: 200px;
+        width: 190px;
         height: 120px;
     }
 }
