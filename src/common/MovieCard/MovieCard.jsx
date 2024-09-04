@@ -10,7 +10,6 @@ const MovieCard = ({ movie }) => {
   const navigate = useNavigate()
 
   const {data : genreData}=useMovieGenreQuery()
-  console.log("gg", genreData)
   const showGenre=(genreIdList)=>{
     if(!genreData) return []
     const genreNameList=genreIdList.map((id)=>{
@@ -21,7 +20,7 @@ const MovieCard = ({ movie }) => {
     return genreNameList;
   }
 
-  const gotoDetail = ({id})=>{
+  const gotoDetail = (id)=>{
     navigate(`/movies/:${id}`)
   }
 
