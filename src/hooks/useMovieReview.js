@@ -10,6 +10,6 @@ export const useMovieReviewQuery=({id})=>{
     return useQuery({
         queryKey:['movie-review'],
         queryFn:()=>fetchMovieReview({id}),
-        select:(result)=>result.data,
+        select:(results)=>results.data,
     })
 }

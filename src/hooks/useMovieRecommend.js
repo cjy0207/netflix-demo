@@ -8,7 +8,7 @@ export const useMovieRecommendQuery =({id})=>{
     return useQuery ({
         queryKey: ['movie-recommend'],
         queryFn : ()=>fetchMovieRecommend({id}),
-        select:(result)=>result.data,
+        select:(results)=>results.data,
        
     })
 }
