@@ -15,7 +15,7 @@ import { useState } from "react";
 //페이지네이션 클릭할 때마다  page바꾸기
 //page 값이 바뀔 때마다 useSearchMovie에  page까지 넣어서 fetch
 const MoviePage = () => {
-  const [query, setQuery] = useSearchParams();
+  const [query] = useSearchParams();
   const keyword = query.get("q");
 
   const [page, setPage] = useState(1)
@@ -55,7 +55,7 @@ const MoviePage = () => {
         <Col lg={8} xs={13}>
           <Row>
             {data?.results.map((movie, index) => (
-              <Col key={index} lg={4} xs={12}>
+              <Col key={index} lg={2} xs={12}>
                 <MovieCard movie={movie} />
               </Col>
             ))}
@@ -81,6 +81,7 @@ const MoviePage = () => {
             activeClassName="active"
             renderOnZeroPageCount={null}
             forcePage={page-1}
+            className="pagination"
           />
         </Col>
       </Row>
