@@ -4,9 +4,10 @@ import "./MovieCard.style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { useMovieGenreQuery } from "../../hooks/useMovieGenre";
-
+import { useNavigate } from "react-router-dom";
 const MovieCard = ({ movie }) => {
   const age = movie.adult ? "over18" : "under18";
+  const navigate = useNavigate()
 
   const {data : genreData}=useMovieGenreQuery()
   console.log("gg", genreData)
@@ -20,6 +21,10 @@ const MovieCard = ({ movie }) => {
     return genreNameList;
   }
 
+  const gotoDetail = ({id})=>{
+    navigate(`/movies/:${id}`)
+  }
+
   return (
     <div
       style={{
@@ -29,6 +34,7 @@ const MovieCard = ({ movie }) => {
           ")",
       }}
       className="movie-card"
+      onClick={gotoDetail}
     >
       <div className="overlay">
         <h2>{movie.title}</h2>
