@@ -1,25 +1,30 @@
 import React from "react";
 import { Button, Container, Form, Nav, Navbar } from "react-bootstrap";
-import { Navigate, Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useLanguage } from "../hooks/useLanguage";
 
 const AppLayout = () => {
-  const Navigate = useNavigate("")
-  const gotoPage = (path) => {
-    Navigate(path)
-  }
+  const navigate = useNavigate();
+  const { language, toggleLanguage } = useLanguage(); // Get the current language and toggle function
+  const [keyword, setKeyword] = useState("");
 
-  const [keyword, setkeyword] =useState("")
-  const searchByKeyword = (event) =>{
-    event.preventDefault()
-    Navigate(`/movies?q=${keyword}`)
-  }
+  const gotoPage = (path) => {
+    navigate(path);
+  };
+
+  const searchByKeyword = (event) => {
+    event.preventDefault();
+    navigate(`/movies?q=${keyword}`);
+    setKeyword("");
+  };
+
   return (
     <div>
       <Navbar expand="lg" variant="dark">
         <Container fluid>
-          <Navbar.Brand onClick={()=>gotoPage("/")} className="navbar-brand-logo">
-            <img src="/netflix_red.png" width={100}/>
+          <Navbar.Brand onClick={() => gotoPage("/")} className="navbar-brand-logo">
+            <img src="/netflix_red.png" width={100} />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
@@ -28,8 +33,8 @@ const AppLayout = () => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Nav.Link onClick={()=>gotoPage("/")}>Home</Nav.Link>
-              <Nav.Link onClick={()=>gotoPage("/movies")}>Movie</Nav.Link>
+              <Nav.Link onClick={() => gotoPage("/")}>Home</Nav.Link>
+              <Nav.Link onClick={() => gotoPage("/movies")}>Movie</Nav.Link>
             </Nav>
             <Form className="d-flex" onSubmit={searchByKeyword}>
               <Form.Control
@@ -38,10 +43,14 @@ const AppLayout = () => {
                 className="me-2"
                 aria-label="Search"
                 value={keyword}
-                onChange={(event)=>setkeyword(event.target.value)}
+                onChange={(event) => setKeyword(event.target.value)}
               />
               <Button variant="outline-danger">Search</Button>
             </Form>
+            {/* KR Button to toggle language */}
+            <Button variant="outline-light" onClick={toggleLanguage}>
+              {language === "en-US" ? "KR" : "EN"}
+            </Button>
           </Navbar.Collapse>
         </Container>
       </Navbar>

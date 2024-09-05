@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 
-
+// Create a context for managing language
 export const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
@@ -17,5 +17,5 @@ export const LanguageProvider = ({ children }) => {
   );
 };
 
-
+// Custom hook to use the language context
 export const useLanguage = () => useContext(LanguageContext);

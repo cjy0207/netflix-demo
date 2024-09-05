@@ -1,14 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import api from "../utils/api";
+import { useLanguage } from "./useLanguage";
 
-const fetchUpcomingMovies = () => {
-    return api.get(`/movie/upcoming`);
-}
+const fetchUpcomingMovies = (language) => {
+  return api.get(`/movie/upcoming?language=${language}`);
+};
 
 export const useUpcomingMoviesQuery = () => {
-    return useQuery({
-        queryKey: ['movie-upcoming'],
-        queryFn: fetchUpcomingMovies,
-        select: (results) => results.data,
-    });
-}
+  const { language } = useLanguage(); 
+
+  return useQuery({
+    queryKey: ['movie-upcoming', language], 
+    queryFn: () => fetchUpcomingMovies(language), 
+    select: (results) => results.data,
+  });
+};

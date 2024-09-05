@@ -4,8 +4,9 @@ import { Routes, Route, Outlet } from "react-router-dom";
 import Homepage from "./pages/Homepage/Homepage";
 import MoviePage from "./pages/Movies/MoviePage";
 import MovieDetailPage from "./pages/MovieDetail/MovieDetailPage";
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { LanguageProvider } from "./hooks/useLanguage";
 
 //홈페이지 /
 //전체 페이지 + search /movies
@@ -16,19 +17,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <div className="app">
-      <Routes>
-        <Route path="/" element={<AppLayout />}>
-          <Route index element={<Homepage />} />
-          <Route path="/movies">
-            <Route index element={<MoviePage />}/>
-            <Route path=":id" element={<MovieDetailPage />} />
+      <LanguageProvider>
+        <Routes>
+          <Route path="/" element={<AppLayout />}>
+            <Route index element={<Homepage />} />
+            <Route path="/movies">
+              <Route index element={<MoviePage />} />
+              <Route path=":id" element={<MovieDetailPage />} />
+            </Route>
           </Route>
-        </Route>
-        <Route path="*" element={<NotFoundPage/>}/>
-      </Routes>
-      <Outlet/>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </LanguageProvider>
     </div>
-      
   );
 }
 
