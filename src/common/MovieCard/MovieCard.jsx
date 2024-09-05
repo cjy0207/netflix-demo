@@ -5,32 +5,30 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { useMovieGenreQuery } from "../../hooks/useMovieGenre";
 import { useNavigate } from "react-router-dom";
+
 const MovieCard = ({ movie }) => {
   const age = movie.adult ? "over18" : "under18";
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const { data: genreData } = useMovieGenreQuery();
 
-  const {data : genreData}=useMovieGenreQuery()
-  const showGenre=(genreIdList)=>{
-    if(!genreData) return []
-    const genreNameList=genreIdList.map((id)=>{
-        const genreObj = genreData.find((genre)=>genre.id===id);
-        return genreObj.name;
-    })
+  const showGenre = (genreIdList) => {
+    if (!genreData) return [];
+    const genreNameList = genreIdList.map((id) => {
+      const genreObj = genreData.find((genre) => genre.id === id);
+      return genreObj ? genreObj.name : 'Unknown';
+    });
 
     return genreNameList;
-  }
+  };
 
-  const gotoDetail = (id)=>{
-    navigate(`/movies/:${id}`)
-  }
+  const gotoDetail = () => {
+    navigate(`/movies/${movie.id}`); // 올바른 URL 형식으로 네비게이션
+  };
 
   return (
     <div
       style={{
-        backgroundImage:
-          "url(" +
-          `https://image.tmdb.org/t/p/original${movie.poster_path}` +
-          ")",
+        backgroundImage: "url(" + `https://image.tmdb.org/t/p/original${movie.poster_path}` + ")",
       }}
       className="movie-card"
       onClick={gotoDetail}
@@ -38,13 +36,12 @@ const MovieCard = ({ movie }) => {
       <div className="overlay">
         <h2>{movie.title}</h2>
         <div className="overlay-details">
-          {showGenre(movie.genre_ids).map((id) => (
-            <Badge bg="danger">{id}</Badge>
+          {showGenre(movie.genre_ids).map((name, index) => (
+            <Badge key={index} bg="danger">{name}</Badge>
           ))}
           <div className="movie-details-container">
             <div className="movie-details">
               <FontAwesomeIcon icon={faStar} className="icon" />
-
               {movie.vote_average}
             </div>
             <div className="movie-details">
