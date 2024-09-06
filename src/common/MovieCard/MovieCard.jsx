@@ -22,7 +22,7 @@ const MovieCard = ({ movie }) => {
   };
 
   const gotoDetail = () => {
-    navigate(`/movies/${movie.id}`); // 올바른 URL 형식으로 네비게이션
+    navigate(`/movies/${movie.id}`);
   };
 
   return (
