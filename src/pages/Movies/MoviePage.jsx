@@ -11,7 +11,7 @@ const MoviePage = () => {
   const [query, setQuery] = useSearchParams();
   const keyword = query.get("q");
   const [selectedGenre, setSelectedGenre] = useState("");
-  const [sortOrder, setSortOrder] = useState("desc"); // 기본 정렬 순서: 내림차순 (인기순)
+  const [sortOrder, setSortOrder] = useState("desc"); 
   const [page, setPage] = useState(1);
 
   const { data: genreData } = useMovieGenreQuery();
@@ -78,7 +78,6 @@ const MoviePage = () => {
               <Form.Control as="select" onChange={handleSortChange} value={sortOrder}>
                 <option value="desc">인기순</option>
                 <option value="asc">인기역순</option>
-                {/* Add more sorting options here if needed */}
               </Form.Control>
             </Form.Group>
           </Row>
