@@ -69,7 +69,7 @@ const MoviePage = () => {
         <Col lg={2} xs={12}>
           <Row>
             <Dropdown>
-              <Dropdown.Toggle variant="secondary" id="dropdown-basic" className="mt-4">
+              <Dropdown.Toggle variant="danger" id="dropdown-basic" className="mt-4">
                 필터
               </Dropdown.Toggle>
 
@@ -88,7 +88,7 @@ const MoviePage = () => {
 
           <Row className="mt-3">
             <Dropdown>
-              <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+              <Dropdown.Toggle variant="danger" id="dropdown-basic">
                 정렬
               </Dropdown.Toggle>
 
